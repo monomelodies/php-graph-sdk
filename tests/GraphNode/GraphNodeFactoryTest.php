@@ -40,7 +40,7 @@ class GraphNodeFactoryTest extends TestCase
      */
     protected $request;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $app = new Application('123', 'foo_app_secret');
         $this->request = new Request(

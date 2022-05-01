@@ -28,9 +28,11 @@ use Facebook\GraphNode\GraphUser;
 use Facebook\Response;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class GraphAlbumTest extends TestCase
 {
+    use ProphecyTrait;
 
     /**
      * @var ObjectProphecy|Response

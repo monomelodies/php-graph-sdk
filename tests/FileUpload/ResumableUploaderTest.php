@@ -30,6 +30,7 @@ use Facebook\FileUpload\ResumableUploader;
 use Facebook\FileUpload\TransferChunk;
 use Facebook\Tests\Fixtures\FakeGraphApiForResumableUpload;
 use PHPUnit\Framework\TestCase;
+use Facebook\Exception\ResponseException;
 
 class ResumableUploaderTest extends TestCase
 {
@@ -79,10 +80,10 @@ class ResumableUploaderTest extends TestCase
     }
 
     /**
-     * @expectedException \Facebook\Exception\ResponseException
      */
     public function testStartWillLetErrorResponsesThrow()
     {
+        $this->expectException(ResponseException::class);
         $this->graphApi->failOnStart();
         $uploader = new ResumableUploader($this->fbApp, $this->client, 'access_token', 'v2.4');
 

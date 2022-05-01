@@ -36,7 +36,7 @@ class GraphPageTest extends TestCase
      */
     protected $responseMock;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $this->responseMock = $this->prophesize(Response::class);
     }

@@ -53,7 +53,7 @@ class ResumableUploaderTest extends TestCase
      */
     private $file;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $this->fbApp = new Application('app_id', 'app_secret');
         $this->graphApi = new FakeGraphApiForResumableUpload();

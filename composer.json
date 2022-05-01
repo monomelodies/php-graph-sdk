@@ -3,8 +3,8 @@
     "description": "Facebook SDK for PHP",
     "keywords": ["facebook", "sdk"],
     "type": "library",
-    "homepage": "https://github.com/facebook/php-graph-sdk",
-    "license": "Facebook Platform",
+    "homepage": "https://github.com/monomelodies/php-graph-sdk",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Facebook",

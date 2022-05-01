@@ -46,7 +46,7 @@ class SignedRequestTest extends TestCase
         'foo' => 'bar',
     ];
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $this->app = new Application('123', 'foo_app_secret');
     }

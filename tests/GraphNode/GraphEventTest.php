@@ -30,9 +30,12 @@ use Facebook\GraphNode\GraphPage;
 use Facebook\GraphNode\GraphCoverPhoto;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class GraphEventTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy|Response
      */

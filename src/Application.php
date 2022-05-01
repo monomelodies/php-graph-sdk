@@ -43,7 +43,7 @@ class Application implements \Serializable
      *
      * @throws SDKException
      */
-    public function __construct($id, $secret)
+    public function __construct(string $id, string $secret)
     {
         if (!is_string($id)
           // Keeping this for BC. Integers greater than PHP_INT_MAX will make is_int() return false

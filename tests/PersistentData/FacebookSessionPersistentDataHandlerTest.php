@@ -24,14 +24,13 @@ namespace Facebook\Tests\PersistentData;
 
 use Facebook\PersistentData\SessionPersistentDataHandler;
 use PHPUnit\Framework\TestCase;
+use Facebook\Exception\SDKException;
 
 class SessionPersistentDataHandlerTest extends TestCase
 {
-    /**
-     * @expectedException \Facebook\Exception\SDKException
-     */
     public function testInactiveSessionsWillThrow()
     {
+        $this->expectException(SDKException::class);
         new SessionPersistentDataHandler();
     }
 

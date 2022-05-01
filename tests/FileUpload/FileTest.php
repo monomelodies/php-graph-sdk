@@ -24,6 +24,7 @@ namespace Facebook\Tests\FileUpload;
 
 use Facebook\FileUpload\File;
 use PHPUnit\Framework\TestCase;
+use Facebook\Exception\SDKException;
 
 class FileTest extends TestCase
 {
@@ -50,11 +51,9 @@ class FileTest extends TestCase
         $this->assertEquals('is a text file', $fileContents);
     }
 
-    /**
-     * @expectedException \Facebook\Exception\SDKException
-     */
     public function testTryingToOpenAFileThatDoesntExistsThrows()
     {
+        $this->expectException(SDKException::class);
         new File('does_not_exist.file');
     }
 }

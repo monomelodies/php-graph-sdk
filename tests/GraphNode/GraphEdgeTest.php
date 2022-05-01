@@ -27,6 +27,7 @@ use Facebook\Request;
 use Facebook\GraphNode\GraphEdge;
 use Facebook\GraphNode\GraphNode;
 use PHPUnit\Framework\TestCase;
+use Facebook\Exception\SDKException;
 
 class GraphEdgeTest extends TestCase
 {
@@ -55,11 +56,9 @@ class GraphEdgeTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \Facebook\Exception\SDKException
-     */
     public function testNonGetRequestsWillThrow()
     {
+        $this->expectException(SDKException::class);
         $this->request->setMethod('POST');
         $graphEdge = new GraphEdge($this->request);
         $graphEdge->validateForPagination();

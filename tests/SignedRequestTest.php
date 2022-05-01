@@ -25,6 +25,7 @@ namespace Facebook\Tests;
 use Facebook\Application;
 use Facebook\SignedRequest;
 use PHPUnit\Framework\TestCase;
+use Facebook\Exception\SDKException;
 
 class SignedRequestTest extends TestCase
 {
@@ -64,11 +65,9 @@ class SignedRequestTest extends TestCase
         $this->assertEquals($this->payloadData, $payload);
     }
 
-    /**
-     * @expectedException \Facebook\Exception\SDKException
-     */
     public function testInvalidSignedRequestsWillFailFormattingValidation()
     {
+        $this->expectException(SDKException::class);
         new SignedRequest($this->app, 'invalid_signed_request');
     }
 
@@ -88,27 +87,21 @@ class SignedRequestTest extends TestCase
         $this->assertEquals('aijkoprstADIJKLOPQTUVX1256!)]-:;"<>?.|~', $decodedData);
     }
 
-    /**
-     * @expectedException \Facebook\Exception\SDKException
-     */
     public function testAnImproperlyEncodedSignatureWillThrowAnException()
     {
+        $this->expectException(SDKException::class);
         new SignedRequest($this->app, 'foo_sig.' . $this->rawPayload);
     }
 
-    /**
-     * @expectedException \Facebook\Exception\SDKException
-     */
     public function testAnImproperlyEncodedPayloadWillThrowAnException()
     {
+        $this->expectException(SDKException::class);
         new SignedRequest($this->app, $this->rawSignature . '.foo_payload');
     }
 
-    /**
-     * @expectedException \Facebook\Exception\SDKException
-     */
     public function testNonApprovedAlgorithmsWillThrowAnException()
     {
+        $this->expectException(SDKException::class);
         $signedRequestData = $this->payloadData;
         $signedRequestData['algorithm'] = 'FOO-ALGORITHM';
 

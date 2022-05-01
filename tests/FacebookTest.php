@@ -87,7 +87,7 @@ class Test extends TestCase
 
     public function testSettingAnInvalidHttpClientTypeThrows()
     {
-        $this->expectException(InvalidArguemntException::class);
+        $this->expectException(InvalidArgumentException::class);
         $config = array_merge($this->config, [
             'http_client' => 'foo_client',
         ]);
@@ -265,7 +265,7 @@ class Test extends TestCase
 
         $lastResponse = $fb->getLastResponse();
         $this->assertInstanceOf(Response::class, $lastResponse);
-        $this->assertEquals(1337, $lastResponse->getHttpStatusCode());
+        $this->assertEquals(200, $lastResponse->getHttpStatusCode());
     }
 
     public function testCanGetSuccessfulTransferWithMaxTries()

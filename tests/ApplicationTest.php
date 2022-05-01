@@ -33,7 +33,7 @@ class ApplicationTest extends TestCase
      */
     private $app;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $this->app = new Application('id', 'secret');
     }

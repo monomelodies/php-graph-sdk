@@ -47,7 +47,7 @@ class OAuth2ClientTest extends TestCase
      */
     protected $oauth;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         $app = new Application('123', 'foo_secret');
         $this->client = new FooClientForOAuth2Test();

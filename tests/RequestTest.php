@@ -27,6 +27,7 @@ use Facebook\Request;
 use Facebook\FileUpload\File;
 use Facebook\FileUpload\Video;
 use PHPUnit\Framework\TestCase;
+use Facebook\Exception\SDKException;
 
 class RequestTest extends TestCase
 {
@@ -38,33 +39,27 @@ class RequestTest extends TestCase
         $this->assertInstanceOf(Request::class, $request);
     }
 
-    /**
-     * @expectedException \Facebook\Exception\SDKException
-     */
     public function testAMissingAccessTokenWillThrow()
     {
+        $this->expectException(SDKException::class);
         $app = new Application('123', 'foo_secret');
         $request = new Request($app);
 
         $request->validateAccessToken();
     }
 
-    /**
-     * @expectedException \Facebook\Exception\SDKException
-     */
     public function testAMissingMethodWillThrow()
     {
+        $this->expectException(SDKException::class);
         $app = new Application('123', 'foo_secret');
         $request = new Request($app);
 
         $request->validateMethod();
     }
 
-    /**
-     * @expectedException \Facebook\Exception\SDKException
-     */
     public function testAnInvalidMethodWillThrow()
     {
+        $this->expectException(SDKException::class);
         $app = new Application('123', 'foo_secret');
         $request = new Request($app, 'foo_token', 'FOO');
 
@@ -108,11 +103,9 @@ class RequestTest extends TestCase
         $this->assertEquals('bar_token', $accessToken);
     }
 
-    /**
-     * @expectedException \Facebook\Exception\SDKException
-     */
     public function testAccessTokenConflictsWillThrow()
     {
+        $this->expectException(SDKException::class);
         $app = new Application('123', 'foo_secret');
         new Request($app, 'foo_token', 'POST', '/me', ['access_token' => 'bar_token']);
     }

@@ -81,7 +81,7 @@ class OAuth2ClientTest extends TestCase
         $scope = ['email', 'base_foo'];
         $authUrl = $this->oauth->getAuthorizationUrl('https://foo.bar', 'foo_state', $scope, ['foo' => 'bar'], '*');
 
-        $this->assertContains('*', $authUrl);
+        $this->assertTrue(strpos($authUrl, '*') !== false);
 
         $expectedUrl = 'https://www.facebook.com/' . static::TESTING_GRAPH_VERSION . '/dialog/oauth?';
         $this->assertStringStartsWith($expectedUrl, $authUrl, 'Unexpected base authorization URL returned from getAuthorizationUrl().');
@@ -95,7 +95,7 @@ class OAuth2ClientTest extends TestCase
             'foo' => 'bar',
         ];
         foreach ($params as $key => $value) {
-            $this->assertContains($key . '=' . urlencode($value), $authUrl);
+            $this->assertTrue(strpos($authUrl, $key . '=' . urlencode($value)) !== false);
         }
     }
 

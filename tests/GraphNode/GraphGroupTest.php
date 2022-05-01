@@ -28,9 +28,12 @@ use Facebook\GraphNode\GraphLocation;
 use Facebook\GraphNode\GraphCoverPhoto;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class GraphGroupTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy|Response
      */

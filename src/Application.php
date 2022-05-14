@@ -25,7 +25,7 @@ namespace Facebook;
 use Facebook\Authentication\AccessToken;
 use Facebook\Exception\SDKException;
 
-class Application implements \Serializable
+class Application
 {
     /**
      * @var string the app ID

@@ -25,7 +25,7 @@ namespace Facebook\Tests\Fixtures;
 
 use GuzzleHttp\Psr7\Response;
 use Http\Client\HttpClient;
-use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\{ RequestInterface, ResponseInterface };
 
 class FakeGraphApiForResumableUpload implements HttpClient
 {
@@ -42,7 +42,7 @@ class FakeGraphApiForResumableUpload implements HttpClient
         $this->respondWith = 'FAIL_ON_TRANSFER';
     }
 
-    public function sendRequest(RequestInterface $request)
+    public function sendRequest(RequestInterface $request) : ResponseInterface
     {
         $body = $request->getBody()->__toString();
         // Could be start, transfer or finish

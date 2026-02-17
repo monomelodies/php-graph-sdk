@@ -50,7 +50,7 @@ class UrlManipulator
             }
 
             if (count($params) > 0) {
-                $query = '?' . http_build_query($params, null, '&');
+                $query = '?' . http_build_query($params, '', '&');
             }
         }
 
@@ -78,7 +78,7 @@ class UrlManipulator
         }
 
         if (strpos($url, '?') === false) {
-            return $url . '?' . http_build_query($newParams, null, '&');
+            return $url . '?' . http_build_query($newParams, '', '&');
         }
 
         list($path, $query) = explode('?', $url, 2);
@@ -91,7 +91,7 @@ class UrlManipulator
         // Sort for a predicable order
         ksort($newParams);
 
-        return $path . '?' . http_build_query($newParams, null, '&');
+        return $path . '?' . http_build_query($newParams, '', '&');
     }
 
     /**
